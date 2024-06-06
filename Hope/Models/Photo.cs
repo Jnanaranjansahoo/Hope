@@ -4,8 +4,9 @@ namespace Hope.Models
 {
     public class Photo
     {
+        [Key]
         public int Id { get; set; }
         [Required]
-        public string ImageUrl { get; set; }
+        public string? ImageUrl { get; set; }
     }
 }
