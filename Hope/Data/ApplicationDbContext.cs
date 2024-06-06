@@ -15,9 +15,9 @@ namespace Hope.Data
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Photo>().HasData(
-                new Photo { Id = 1, ImageUrl = "" },
-                new Photo { Id = 2, ImageUrl = "" },
-                new Photo { Id = 3, ImageUrl = "" }
+                new Photo { Id = 1, ImageUrl = "3" },
+                new Photo { Id = 2, ImageUrl = "5" },
+                new Photo { Id = 3, ImageUrl = "2" }
                 );
         }
     }

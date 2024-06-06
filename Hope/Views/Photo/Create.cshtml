@@ -93,12 +93,13 @@
                 <div class="col-lg-3 col-md-6 mb-4">
                     <form method="post" class="row" >
                         <div class="cat-item position-relative overflow-hidden rounded mb-2">
-                            <input type="text" name="file" class="form-control border-dark shadow" />
+                            <input type="text" name="file" asp-for="ImageUrl" class="form-control border-dark shadow" />
                             <span asp-validation-for="ImageUrl" class="text-danger"></span>
                         </div>
                         <div class="text-center py-4">
                             <a class="h6 text-decoration-none text-truncate" href="">
                                 <button type="submit" class="btn btn-primary form-control">Create</button>
+
                             </a>
                         </div>
                         <div class="text-center py-4">

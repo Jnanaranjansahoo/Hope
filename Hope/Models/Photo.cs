@@ -1,8 +1,11 @@
-﻿namespace Hope.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Hope.Models
 {
     public class Photo
     {
         public int Id { get; set; }
-        public string? ImageUrl { get; set; }
+        [Required]
+        public string ImageUrl { get; set; }
     }
 }
