@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using System.ComponentModel.DataAnnotations;
 
 namespace Hope.Models
 {
@@ -7,6 +8,7 @@ namespace Hope.Models
         [Key]
         public int Id { get; set; }
         [Required]
+        [ValidateNever]
         public string ImageUrl { get; set; }
     }
 }

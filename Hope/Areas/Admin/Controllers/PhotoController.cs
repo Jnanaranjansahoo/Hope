@@ -1,20 +1,23 @@
 ﻿using Hope.Data;
 using Hope.Models;
+using Hope.Repository;
+using Hope.Repository.IRepository;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 
-namespace Hope.Controllers
+namespace Hope.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class PhotoController : Controller
     {
-        private readonly ApplicationDbContext _db;
-        public PhotoController(ApplicationDbContext db)
+        private readonly IUnitOfWork _unitOfWork;
+        public PhotoController(IUnitOfWork unitOfWork)
         {
-            _db = db; 
+            _unitOfWork = unitOfWork;
         }
         public IActionResult Index()
         {
-           List<Photo> objPhotoList = _db.Photos.ToList();
+            List<Photo> objPhotoList = _unitOfWork.Photo.GetAll().ToList();
             return View(objPhotoList);
         }
         public IActionResult Create()
@@ -26,8 +29,8 @@ namespace Hope.Controllers
         {
             if (ModelState.IsValid)
             {
-                _db.Photos.Add(obj);
-                _db.SaveChanges();
+                _unitOfWork.Photo.Add(obj);
+                _unitOfWork.Save();
                 return RedirectToAction("Index");
             }
             return View();
@@ -38,7 +41,7 @@ namespace Hope.Controllers
             {
                 return NotFound();
             }
-            Photo? photoFromDb = _db.Photos.Find(id);
+            Photo? photoFromDb = _unitOfWork.Photo.Get(u => u.Id == id);
             if (photoFromDb == null)
             {
                 return NotFound();
@@ -50,8 +53,8 @@ namespace Hope.Controllers
         {
             if (ModelState.IsValid)
             {
-                _db.Photos.Update(obj);
-                _db.SaveChanges();
+                _unitOfWork.Photo.Update(obj);
+                _unitOfWork.Save();
                 return RedirectToAction("Index");
             }
             return View();
@@ -62,7 +65,7 @@ namespace Hope.Controllers
             {
                 return NotFound();
             }
-            Photo? photoFromDb = _db.Photos.Find(id);
+            Photo? photoFromDb = _unitOfWork.Photo.Get(u => u.Id == id);
             if (photoFromDb == null)
             {
                 return NotFound();
@@ -72,13 +75,13 @@ namespace Hope.Controllers
         [HttpPost, ActionName("Delete")]
         public IActionResult DeletePOST(int? id)
         {
-            Photo? obj = _db.Photos.Find(id);
+            Photo? obj = _unitOfWork.Photo.Get(u => u.Id == id);
             if (obj == null)
             {
                 return NotFound();
             }
-            _db.Photos.Remove(obj);
-            _db.SaveChanges();
+            _unitOfWork.Photo.Remove(obj);
+            _unitOfWork.Save();
             return RedirectToAction("Index");
         }
     }
