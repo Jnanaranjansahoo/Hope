@@ -1,9 +1,8 @@
-﻿@model Photo
+﻿
+<!DOCTYPE html>
+<html lang="en">
 
 <body>
-
-
-    <!-- Topbar End -->
     <!-- Navbar Start -->
     <div class="container-fluid">
         <div class="row border-top px-xl-5">
@@ -26,6 +25,16 @@
                     </div>
                 </nav>
             </div>
+
+
+        </div>
+    </div>
+    <!-- Navbar End -->
+    <!-- Navbar Start -->
+    <div class="container-fluid">
+        <div class="row border-top px-xl-5">
+            <div class="col-lg-3 d-none d-lg-block">
+            </div>
             <div class="col-lg-9">
                 <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
                     <a href="" class="text-decoration-none d-block d-lg-none">
@@ -37,9 +46,9 @@
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav py-0">
                             <a class="nav-item nav-link" asp-controller="Home" asp-action="Index">Home</a>
-                            <a class="nav-item nav-link" asp-controller="Home" asp-action="AboutUs">About Us</a>
+                            <a class="nav-item nav-link " asp-controller="Home" asp-action="AboutUs">About Us</a>
                             <div class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" asp-controller="Home" asp-action="Mission">Mission</a>
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" asp-controller="Home" asp-action="Mission">Misssion</a>
                                 <div class="dropdown-menu rounded-0 m-0">
                                     <a class="dropdown-item" asp-controller="Home" asp-action="MissionVision">Mission & Vision</a>
                                     <a class="dropdown-item" asp-controller="Home" asp-action="History">Our History</a>
@@ -51,14 +60,14 @@
                             <a class="nav-item nav-link" asp-controller="Home" asp-action="Services">Services</a>
                             <a class="nav-item nav-link" asp-controller="Home" asp-action="Activities">Activities</a>
                             <div class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle active" data-toggle="dropdown" asp-controller="Home" asp-action="Gallery">Gallery</a>
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" asp-controller="Home" asp-action="Gallery">Gallery</a>
                                 <div class="dropdown-menu rounded-0 m-0">
-                                    <a class="dropdown-item active" asp-controller="Home" asp-action="Image">Image Gallery</a>
+                                    <a class="dropdown-item" asp-controller="Home" asp-action="Image">Image Gallery</a>
                                     <a class="dropdown-item" asp-controller="Home" asp-action="Video">Video Gallery</a>
                                 </div>
                             </div>
 
-                            <a class="nav-item nav-link" asp-controller="Home" asp-action="Contact">Contact</a>
+                            <a class="nav-item nav-link active" asp-controller="Home" asp-action="Contact">Contact</a>
                         </div>
                         <a class="btn btn-primary py-2 px-4 ml-auto d-none d-lg-block" href="">Contribution</a>
                     </div>
@@ -71,58 +80,55 @@
     <div class="container-fluid page-header" style="margin-bottom: 90px;">
         <div class="container">
             <div class="d-flex flex-column justify-content-center" style="min-height: 300px">
-                <h3 class="display-4 text-white text-uppercase">Gallery</h3>
+                <h3 class="display-4 text-white text-uppercase">Contact</h3>
                 <div class="d-inline-flex text-white">
                     <p class="m-0 text-uppercase"><a class="text-white" href="">Home</a></p>
                     <i class="fa fa-angle-double-right pt-1 px-3"></i>
-                    <p class="m-0 text-uppercase">Gallery</p>
+                    <p class="m-0 text-uppercase">Contact</p>
                 </div>
             </div>
         </div>
     </div>
     <!-- Header End -->
-
+    <!-- Contact Start -->
     <div class="container-fluid py-5">
-        <div class="container pt-5 pb-3">
+        <div class="container py-5">
             <div class="text-center mb-5">
-
-                <h1>Our Top Mission</h1>
+                <h5 class="text-primary text-uppercase mb-3" style="letter-spacing: 5px;">Contact</h5>
+                <h1>Contact For Any Query</h1>
             </div>
-
-            <div class="row">
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <form method="post" class="row">
-                        <input asp-for="Id" hidden />
-                        <div>
-                            <img src="@Model.ImageUrl" width="100%"
-                                 style="border-radius:5px; border:1px solid #bbb9b9" />
-                        </div>
-                        @* <div class="cat-item position-relative overflow-hidden rounded mb-2">
-                            <input type="text" disabled asp-for="ImageUrl" class="form-control border-dark shadow" />
-                            
-                        </div> *@
-                        <div class="text-center py-4">
-                            <a class="h6 text-decoration-none text-truncate" href="">
-                                <button type="submit" class="btn btn-primary form-control">Delete</button>
-
-                            </a>
-                        </div>
-                        <div class="text-center py-4">
-                            <a asp-controller="Photo" asp-action="Index" class="btn btn-outline-primary border form-control">
-                                Back To List
-                            </a>
-
-                        </div>
-                    </form>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="contact-form bg-secondary rounded p-5">
+                        <div id="success"></div>
+                        <form name="sentMessage" id="contactForm" novalidate="novalidate">
+                            <div class="control-group">
+                                <input type="text" class="form-control border-0 p-4" id="name" placeholder="Your Name" required="required" data-validation-required-message="Please enter your name" />
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="control-group">
+                                <input type="email" class="form-control border-0 p-4" id="email" placeholder="Your Email" required="required" data-validation-required-message="Please enter your email" />
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="control-group">
+                                <input type="text" class="form-control border-0 p-4" id="subject" placeholder="Subject" required="required" data-validation-required-message="Please enter a subject" />
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="control-group">
+                                <textarea class="form-control border-0 py-3 px-4" rows="5" id="message" placeholder="Message" required="required" data-validation-required-message="Please enter your message"></textarea>
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="text-center">
+                                <button class="btn btn-primary py-3 px-5" type="submit" id="sendMessageButton">Send Message</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
-
         </div>
     </div>
+    <!-- Contact End -->
 
 </body>
-@section Scripts {
-    @{
-        <partial name="_ValidationScriptsPartial" />
-    }
-}
+
+</html>

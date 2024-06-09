@@ -14,7 +14,15 @@ namespace Hope.Repository
         }
         public void Update(Photo obj)
         {
-            _db.Photos.Update(obj);
+            var objFromDb = _db.Photos.FirstOrDefault(u => u.Id == obj.Id);
+            if (objFromDb != null)
+            {
+                
+                if (obj.ImageUrl != null)
+                {
+                    objFromDb.ImageUrl = obj.ImageUrl;
+                }
+            }
         }
     }
 }

@@ -1,9 +1,11 @@
-﻿@model Photo
+﻿
+@model IEnumerable<Photo>
+
+<!DOCTYPE html>
+<html lang="en">
 
 <body>
 
-
-    <!-- Topbar End -->
     <!-- Navbar Start -->
     <div class="container-fluid">
         <div class="row border-top px-xl-5">
@@ -81,7 +83,6 @@
         </div>
     </div>
     <!-- Header End -->
-
     <div class="container-fluid py-5">
         <div class="container pt-5 pb-3">
             <div class="text-center mb-5">
@@ -90,39 +91,21 @@
             </div>
 
             <div class="row">
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <form method="post" class="row">
-                        <input asp-for="Id" hidden />
-                        <div>
-                            <img src="@Model.ImageUrl" width="100%"
-                                 style="border-radius:5px; border:1px solid #bbb9b9" />
+                @foreach (var photo in Model)
+                {
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="text-center cat-item position-relative overflow-hidden rounded mb-2">
+                            <img class="img-fluid-img" src="@photo.ImageUrl" alt="">
                         </div>
-                        @* <div class="cat-item position-relative overflow-hidden rounded mb-2">
-                            <input type="text" disabled asp-for="ImageUrl" class="form-control border-dark shadow" />
-                            
-                        </div> *@
-                        <div class="text-center py-4">
-                            <a class="h6 text-decoration-none text-truncate" href="">
-                                <button type="submit" class="btn btn-primary form-control">Delete</button>
-
-                            </a>
-                        </div>
-                        <div class="text-center py-4">
-                            <a asp-controller="Photo" asp-action="Index" class="btn btn-outline-primary border form-control">
-                                Back To List
-                            </a>
-
-                        </div>
-                    </form>
-                </div>
+                        
+                    </div>
+                }
             </div>
+            
 
         </div>
     </div>
 
 </body>
-@section Scripts {
-    @{
-        <partial name="_ValidationScriptsPartial" />
-    }
-}
+
+</html>

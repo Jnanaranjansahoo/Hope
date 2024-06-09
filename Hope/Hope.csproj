@@ -161,6 +161,7 @@
 
   <ItemGroup>
     <Folder Include="Controllers\" />
+    <Folder Include="wwwroot\images\photo\" />
   </ItemGroup>
 
 </Project>

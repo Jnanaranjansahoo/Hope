@@ -7,10 +7,6 @@
 
 <body>
 
-    @* <div class="col-2">
-    <img src="@Model.Client.ImageUrl" width="100%"
-    style="border-radius:5px; border:1px solid #bbb9b9" />
-    </div>  *@
     
     <!-- Navbar Start -->
     <div class="container-fluid">
@@ -96,86 +92,35 @@
 
                 <h1>Our Top Mission</h1>
             </div>
-
-
+                
+            <div class="row">
+                @foreach (var obj in Model)
+                {
+                    <div class="col-lg-3 col-md-6 mb-4">
+                         <div class="text-center cat-item position-relative overflow-hidden rounded mb-2">
+                            <img class="img-fluid-img" src="@obj.ImageUrl" alt="">
+                         </div>
+                            <div class="text-center py-4">
+                                <a asp-controller="Photo" asp-action="Upsert"  asp-route-id="@obj.Id" class="h6 text-decoration-none text-truncate">
+                                    <i class="bi bi-pencil-square"></i> Edit
+                                </a>
+                                <a asp-controller="Photo" asp-action="Delete"  asp-route-id="@obj.Id" class="h6 text-decoration-none text-truncate pl-2">
+                                    <i class="bi bi-trash-fill"></i> Delete
+                                </a>
+                            </div>
+                    </div>
+                }
+            </div>
             <div class="row">
                 <div class="col-lg-3 col-md-6 mb-4">
 
                     <div class="cat-item position-relative overflow-hidden rounded mb-2">
                         <img class="img-fluid" src="~/img/add-png-8.png" alt="">
-                        <a class="cat-overlay text-white text-decoration-none"  asp-controller="Photo" asp-action="Create">Add</a>
+                        <a class="cat-overlay text-white text-decoration-none" asp-controller="Photo" asp-action="Upsert">Add</a>
                     </div>
 
                 </div>
             </div>
-
-
-            <table id="tblData" class="table table-bordered table-striped">
-                <thead>
-
-                    <tr>
-                        
-                        <th>
-                            Clients iD
-                        </th>
-                        <th>
-                            Clients Name
-                        </th>
-                       
-                    </tr>
-
-                </thead>
-                <tbody>
-                    @foreach (var obj in Model)
-                    {
-                        <tr>
-                            <td>@obj.Id</td>
-                            <td>@obj.ImageUrl</td>
-                            
-                            
-                            <td>
-                                <div class="w-75 btn-group" role="group">
-                                    <a asp-controller="Photo" asp-action="Edit" asp-route-id="@obj.Id" class="h6 text-decoration-none text-truncate">
-                                        <i class="bi bi-pencil-square"></i> Edit
-                                    </a>
-                                    <a asp-controller="Photo" asp-action="Delete" asp-route-id="@obj.Id" class="h6 text-decoration-none text-truncate pl-2">
-                                        <i class="bi bi-trash-fill"></i> Delete
-                                    </a>
-                                </div>
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-
-            @* <div class="row">
-                <div class="col-lg-3 col-md-6 mb-4">
-                    @foreach (var obj in Model)
-                    {
-                        <div class="text-center">
-                            <img class="img-fluid" src="@obj.ImageUrl" alt="">
-                        </div>
-                        <div class="text-center py-4">
-                            <a asp-controller="Photo" asp-action="Edit"  asp-route-id="@obj.Id" class="h6 text-decoration-none text-truncate">
-                                <i class="bi bi-pencil-square"></i> Edit
-                            </a>
-                            <a asp-controller="Photo" asp-action="Delete"  asp-route-id="@obj.Id" class="h6 text-decoration-none text-truncate pl-2">
-                                <i class="bi bi-trash-fill"></i> Delete
-                            </a>
-                        </div>
-                    }
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-3 col-md-6 mb-4">
-
-                   <div class="cat-item position-relative overflow-hidden rounded mb-2">
-                        <img class="img-fluid" src="~/img/add-png-8.png" alt="">
-                        <a class="cat-overlay text-white text-decoration-none" asp-area="" asp-controller="Photo" asp-action="Create">Add</a>
-                   </div>
-
-                </div>
-            </div> *@
 
 
         </div>

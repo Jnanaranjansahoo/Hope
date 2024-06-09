@@ -90,19 +90,36 @@
             </div>
 
             <div class="row">
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <form method="post" class="row" >
+                <div class="">
+
+                    <form method="post" class="row" enctype="multipart/form-data">
+                        <input asp-for="Id" hidden />
+                        <input asp-for="ImageUrl" hidden />
+                        <div>
+                            <img id="blah" src="@Model.ImageUrl" width="100%"
+                                 style="border-radius:5px; border:1px solid #bbb9b9" />
+                        </div>
                         <div class="cat-item position-relative overflow-hidden rounded mb-2">
-                            <input type="text" asp-for="ImageUrl" class="form-control border-dark shadow" />
+                            <input type="file" name="file" class="form-control border-dark shadow" onchange="readURL(this);" />
+                           
+                           
                             <span asp-validation-for="ImageUrl" class="text-danger"></span>
                         </div>
-                        <div class="text-center py-4">
+                        <div class="text-center py-4 col-lg-3 col-md-6 mb-4">
                             <a class="h6 text-decoration-none text-truncate" href="">
-                                <button type="submit" class="btn btn-primary form-control">Create</button>
-
+                                @if(Model.Id !=0)
+                                {
+                                    <button type="submit" class="btn btn-primary form-control">Update</button>
+                                }
+                                else
+                                {
+                                    <button type="submit" class="btn btn-primary form-control">Create</button>
+                                }
+                                
                             </a>
+
                         </div>
-                        <div class="text-center py-4">
+                        <div class="text-center py-4 col-lg-3 col-md-6 mb-4">
                             <a asp-controller="Photo" asp-action="Index" class="btn btn-outline-primary border form-control">
                                 Back To List
                             </a>
@@ -117,6 +134,20 @@
 
 </body>
 @section Scripts {
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#blah')
+                        .attr('src', e.target.result);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
     @{
         <partial name="_ValidationScriptsPartial" />
     }
