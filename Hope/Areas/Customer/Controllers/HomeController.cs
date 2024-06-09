@@ -22,8 +22,7 @@ namespace Hope.Areas.Customer.Controllers
         }
         public IActionResult Gallery()
         {
-            IEnumerable<Photo> photoList = _unitOfWork.Photo.GetAll();
-            return View(photoList);
+           
         }
         public IActionResult Aboutus()
         {
