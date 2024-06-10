@@ -2,6 +2,8 @@
 using Hope.Models;
 using Hope.Repository;
 using Hope.Repository.IRepository;
+using Hope.Utility;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Identity.Client;
 using System.Linq;
@@ -9,6 +11,7 @@ using System.Linq;
 namespace Hope.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = SD.Role_Admin)]
     public class PhotoController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
