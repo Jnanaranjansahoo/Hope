@@ -36,8 +36,8 @@ namespace Hope.DbInitializer
                     
                 }, "Admin@123").GetAwaiter().GetResult();
 
-                //IdentityUser user = _db.IdentityUsers.FirstOrDefault(u => u.Email == "admin@dotnetmastery.com");
-                //_userManager.AddToRoleAsync(user, SD.Role_Admin).GetAwaiter().GetResult();
+                IdentityUser user = _db.IdentityUsers.FirstOrDefault(u => u.Email == "admin@dotnetmastery.com");
+                _userManager.AddToRoleAsync(user, SD.Role_Admin).GetAwaiter().GetResult();
             }
             return;
         }
