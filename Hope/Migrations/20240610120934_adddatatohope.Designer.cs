@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Hope.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240610112934_addstaticuserid")]
-    partial class addstaticuserid
+    [Migration("20240610120934_adddatatohope")]
+    partial class adddatatohope
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
