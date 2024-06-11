@@ -36,6 +36,10 @@
 
                             <a class="nav-item nav-link" asp-controller="Home" asp-action="Services">Services</a>
                             <a class="nav-item nav-link" asp-controller="Home" asp-action="Activities">Activities</a>
+                            @if (User.IsInRole(SD.Role_Admin))
+                            {
+                                <a class="nav-link text-dark" asp-area="Admin" asp-controller="Photo" asp-action="Index">Admin Photos</a>
+                            }
                             <div class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" asp-controller="Home" asp-action="Gallery">Gallery</a>
                                 <div class="dropdown-menu rounded-0 m-0">

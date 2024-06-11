@@ -1,4 +1,5 @@
 ﻿using Hope.Data;
+using Hope.Models;
 using Hope.Utility;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -22,21 +23,36 @@ namespace Hope.DbInitializer
         }
         public void Initialize()
         {
-            
+
+            // Migrations if they are not applied
+
+            try
+            {
+                if (_db.Database.GetPendingMigrations().Count() > 0)
+                {
+                    _db.Database.Migrate();
+                }
+            }
+            catch (Exception ex) { }
+
             //Create roles if they are not created
 
-            if (!_roleManager.RoleExistsAsync(SD.Role_Admin).GetAwaiter().GetResult())
+            if (!_roleManager.RoleExistsAsync(SD.Role_Customer).GetAwaiter().GetResult())
             {
+                _roleManager.CreateAsync(new IdentityRole(SD.Role_Customer)).GetAwaiter().GetResult();
+                _roleManager.CreateAsync(new IdentityRole(SD.Role_Admin)).GetAwaiter().GetResult();
+
                 // If roles are not created, then we will create admin user as well
 
-                _userManager.CreateAsync(new IdentityUser
+                _userManager.CreateAsync(new ApplicationUser
                 {
                     UserName = "admin@dotnetmastery.com",
-                    Email = "admin@dotnetmastery.com"
+                    Email = "admin@dotnetmastery.com",
+                    Name = "Admin"
                     
                 }, "Admin@123").GetAwaiter().GetResult();
 
-                IdentityUser user = _db.IdentityUsers.FirstOrDefault(u => u.Email == "admin@dotnetmastery.com");
+                ApplicationUser user = _db.ApplicationUsers.FirstOrDefault(u => u.Email == "admin@dotnetmastery.com");
                 _userManager.AddToRoleAsync(user, SD.Role_Admin).GetAwaiter().GetResult();
             }
             return;

@@ -20,11 +20,6 @@ namespace Hope.Areas.Customer.Controllers
         {
             return View();
         }
-        public IActionResult Images()
-        {
-            IEnumerable<Photo> photoList = _unitOfWork.Photo.GetAll();
-            return View(photoList);
-        }
         public IActionResult Aboutus()
         {
             return View();
@@ -60,7 +55,8 @@ namespace Hope.Areas.Customer.Controllers
        
         public IActionResult Image()
         {
-            return View();
+            IEnumerable<Photo> photoList = _unitOfWork.Photo.GetAll();
+            return View(photoList);
         }
         public IActionResult Video()
         {

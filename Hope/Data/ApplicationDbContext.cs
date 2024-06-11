@@ -11,7 +11,7 @@ namespace Hope.Data
         {
         }
         public DbSet<Photo> Photos { get; set; }
-        public DbSet<IdentityUser> IdentityUsers { get; set; }
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
