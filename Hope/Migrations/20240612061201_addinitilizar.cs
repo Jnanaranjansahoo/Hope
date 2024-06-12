@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Hope.Migrations
 {
     /// <inheritdoc />
-    public partial class adddatatodb : Migration
+    public partial class addinitilizar : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

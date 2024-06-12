@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Hope.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240611100445_adddatatodb")]
-    partial class adddatatodb
+    [Migration("20240612061201_addinitilizar")]
+    partial class addinitilizar
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
