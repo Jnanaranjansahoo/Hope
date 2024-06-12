@@ -28,28 +28,62 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Hope</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        
-                        @if (User.IsInRole(SD.Role_Admin))
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="Admin" asp-controller="Photo" asp-action="Index">Photos</a>
-                            </li>
-                        }
-                       
-                    </ul>
-                    <partial name="_LoginPartial" />
+        <div class="container-fluid d-none d-lg-block">
+            <div class="row align-items-center py-4 px-xl-5">
+                <div class="col-lg-3">
+                    <a href="" class="text-decoration-none">
+                        <h1 class="m-0"><img src="~/img/favicon.png" /><span class="text-primary">HOPE</span>AGE</h1>
+                    </a>
                 </div>
+                <div class="col-lg-3 text-right">
+                    <div class="d-inline-flex align-items-center">
+                        <i class="fa fa-2x fa-map-marker-alt text-primary mr-3"></i>
+                        <div class="text-left">
+                            <h6 class="font-weight-semi-bold mb-1">Our Office</h6>
+                            <small>Monday - Saturday</small>
+                            <small>(10 am to 06 pm)</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 text-right">
+                    <div class="d-inline-flex align-items-center">
+                        <i class="fa fa-2x fa-envelope text-primary mr-3"></i>
+                        <div class="text-left">
+                            <h6 class="font-weight-semi-bold mb-1">Send me Email</h6>
+                            <small>
+                                hopeageodisha@yahoo.com
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 text-right">
+                    <div class="d-inline-flex align-items-center">
+                        <i class="fa fa-2x fa-phone text-primary mr-3"></i>
+                        <div class="text-left">
+                            <h6 class="font-weight-semi-bold mb-1">Want to talk with us</h6>
+                            <small>
+                                9861464932
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                @if (User.IsInRole(SD.Role_Admin))
+                {
+                    <div class="col-lg-3 text-right">
+                        <div class="d-inline-flex align-items-center">
+                       
+                            <div class="text-left">
+                                <partial name="_LoginPartial" />
+                            
+                            </div>
+                        </div>
+                    </div>
+                }
             </div>
-        </nav>
+        </div>
+    </header>
+   
+        
     </header>
     <div class="">
         <main role="main" class="pb-3">
